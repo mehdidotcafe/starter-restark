@@ -1,5 +1,5 @@
 import {
-  PropsWithChildren, useContext, useEffect, useState, createContext,
+  PropsWithChildren, useContext, useEffect, useState, createContext, useMemo,
 } from 'react'
 import { IntlProvider as ReactIntlProvider } from 'react-intl'
 
@@ -25,20 +25,21 @@ const getDefaultLocale = (): Locale => {
 
 export const IntlContext = createContext<IntlContextType>({} as IntlContextType)
 
-export default ({
+function Provider({
   defaultLocale = getDefaultLocale(),
   children,
-}: PropsWithChildren<IntlContextProps>) => {
-  const [messages, setMessages] = useState<IntlMessages>()
+}: PropsWithChildren<IntlContextProps>) {
+  const [messages, setMessages] = useState<IntlMessages>({})
   const [locale, setLocale] = useState<Locale>(defaultLocale)
+  const value = useMemo(() => ({ locale, messages, setLocale }), [locale, messages])
 
   useEffect(() => {
-    import(`../lang/${locale}.json`).then(setMessages)
+    import(`../lang/${locale}.ts`).then((m) => setMessages(m.default))
   }, [locale])
 
   return messages ? (
     <ReactIntlProvider locale={locale} messages={messages}>
-      <IntlContext.Provider value={{ locale, messages, setLocale }}>
+      <IntlContext.Provider value={value}>
         {children}
       </IntlContext.Provider>
     </ReactIntlProvider>
@@ -46,3 +47,5 @@ export default ({
 }
 
 export const useIntl = () => useContext(IntlContext)
+
+export default Provider

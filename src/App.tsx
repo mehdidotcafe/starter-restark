@@ -7,7 +7,7 @@ const Container = styled.div`
 background-color: red;
 `
 
-export default () => {
+function App() {
   const { messages, setLocale, locale } = useIntl()
 
   return (
@@ -22,3 +22,5 @@ export default () => {
     </Container>
   )
 }
+
+export default App

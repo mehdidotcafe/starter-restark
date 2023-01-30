@@ -5,7 +5,7 @@ import IntlProvider from '@/provider/IntlProvider'
 
 ReactDOM.render(
   <StrictMode>
-    <IntlProvider>
+    <IntlProvider defaultLocale='en'>
       <App />
     </IntlProvider>
   </StrictMode>,
