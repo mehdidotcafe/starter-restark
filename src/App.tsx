@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { useIntl } from '@/provider/IntlProvider'
 
+import { APP_NAME } from '@/env'
+
 const Container = styled.div`
 background-color: red;
 `
@@ -10,7 +12,7 @@ export default () => {
 
   return (
     <Container>
-      <h1>{process.env.VITE_APP_NAME}</h1>
+      <h1>{APP_NAME}</h1>
       <div>
         {messages.hello}
         <div>

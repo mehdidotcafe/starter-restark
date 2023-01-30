@@ -5,7 +5,6 @@ import { IntlProvider as ReactIntlProvider } from 'react-intl'
 
 // First locale is the default locale
 export const allowedLocales = ['en', 'fr'] as const
-export const defaultLocale = allowedLocales[0]
 export type Locale = typeof allowedLocales[number]
 
 export type IntlMessages = Record<string, string>
@@ -15,7 +14,7 @@ type IntlContextType = {
   readonly setLocale: (locale: Locale) => void
 }
 type IntlContextProps = {
-  readonly defaultLocale?: Locale
+  readonly defaultLocale: Locale
 }
 
 const getDefaultLocale = (): Locale => {

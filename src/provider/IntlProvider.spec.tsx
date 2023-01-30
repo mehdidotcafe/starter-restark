@@ -6,8 +6,8 @@ import IntlProvider, {
   useIntl, Locale, allowedLocales, defaultLocale,
 } from '@/provider/IntlProvider'
 
-import messagesEn from '@/lang/en.json'
-import messagesFr from '@/lang/fr.json'
+import messagesEn from '@/lang/en'
+import messagesFr from '@/lang/fr'
 
 const testKey = 'hello'
 
@@ -24,7 +24,7 @@ function TestComponent({ localeToSet }: { localeToSet: Locale }) {
 
 const renderComponent = (defaultLocaleProvider?: Locale, localeToSet?: Locale) => render(
   <IntlProvider defaultLocale={defaultLocaleProvider}>
-    <TestComponent localeToSet={localeToSet} />
+    <TestComponent localeToSet={localeToSet ?? 'fr'} />
   </IntlProvider>,
 )
 

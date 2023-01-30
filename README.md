@@ -1,7 +1,7 @@
 - React
 - Vite
 - Typescript
-- styled=component
+- styled-component
 - react-intl
 - jest
 - eslint

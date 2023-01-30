@@ -25,7 +25,8 @@ module.exports = {
   ],
   rules: {
     semi: [2, 'never'],
-    '@typescript-eslint/semi': [2, 'never']
+    '@typescript-eslint/semi': [2, 'never'],
+    'import/extensions': [2, 'never'],
   },
   settings: {
     react: {
